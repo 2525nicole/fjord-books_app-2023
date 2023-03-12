@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      book: 本  #g
+
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+  books:
+    create:
+      success: 本の登録が完了しました。
+    update:
+      success: 本の情報が更新されました。
+    destroy:
+      success:  本を削除しました。     
+  Books: 本の一覧
+  Editing_book: 本の編集
+  Show_this_book: 本の詳細を見る
+  New_book: 本の新規登録
+  Edit_this_book: 内容を編集する
+  Back_to_books: 一覧に戻る
+  Destroy_this_book: この本を削除する
