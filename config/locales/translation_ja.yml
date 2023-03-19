@@ -9,9 +9,9 @@ ja:
         picture: 写真  #g
         title: タイトル  #g
   success_message:
-    create: 本の登録が完了しました。
-    update: 本の情報が更新されました。
-    destroy: 本を削除しました。
+    create: '%{item}の登録が完了しました。'
+    update: '%{item}の情報が更新されました。'
+    destroy: '%{item}を削除しました。'
   index:
     title: 一覧
   new:
