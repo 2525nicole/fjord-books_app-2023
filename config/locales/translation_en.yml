@@ -9,9 +9,9 @@ en:
         picture: Picture  #g
         title: Title  #g
   success_message:
-    create: '%{item} successfully created.'
-    update: '%{item} successfully updated.'
-    destroy: '%{item} successfully destroyed.'
+    create: '%{item} is successfully created.'
+    update: '%{item} is successfully updated.'
+    destroy: '%{item} is successfully destroyed.'
   index:
     title: Books
   new:
