@@ -68,6 +68,7 @@ group :development do
   gem 'erb_lint', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
+  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :test do
