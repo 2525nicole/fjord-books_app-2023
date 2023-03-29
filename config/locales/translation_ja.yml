@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      book: 本  #g
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+  success_message:
+    create: '%{item}の登録が完了しました。'
+    update: '%{item}の情報が更新されました。'
+    destroy: '%{item}を削除しました。'
+  index:
+    title: 一覧
+  new:
+    title: 新規登録
+  edit:
+    title: 編集
+  views:
+    show: 詳細
+    new: 新規登録
+    edit: 編集
+    back: 一覧に戻る
+    destroy: 削除
