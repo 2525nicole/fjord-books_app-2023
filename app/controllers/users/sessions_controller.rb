@@ -14,11 +14,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super do
-  #     return redirect_to new_user_session_path, status: :see_other#, notice: I18n.t("devise.sessions.signed_out")
-  #   end
-  # end
+  def destroy
+    super do
+      return redirect_to new_user_session_path, status: :see_other#, notice: I18n.t("devise.sessions.signed_out")
+    end
+  end
 
   # protected
 
