@@ -1,0 +1,7 @@
+ja:
+  layouts:
+    application:
+      "My profile": マイプロフィール
+      "Edit profile": プロフィール編集
+      "Users": ユーザー一覧
+      Logout: ログアウト

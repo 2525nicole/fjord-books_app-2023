@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      book: 本  #g
+      user: ユーザー  #g
+
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+
+      user:
+        address: 住所  #g
+        email: Eメール  #g
+        encrypted_password: 暗号化パスワード  #g
+        name: 名前  #g
+        postal_code: 郵便番号  #g
+        remember_created_at: ログイン記憶時刻  #g
+        reset_password_sent_at: パスワードリセット送信時刻  #g
+        reset_password_token: パスワードリセット用トークン  #g
+        self_introduction: 自己紹介  #g
