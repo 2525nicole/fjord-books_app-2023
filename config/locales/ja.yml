@@ -187,3 +187,9 @@ ja:
     new: 新規登録
     edit: 編集
     destroy: 削除
+    login_user_name: "%{user}としてログイン中"
+    back_to_myprofile: マイプロフィールに戻る
+  title:
+    edit: "%{model}の編集"
+    index: "%{model}一覧"
+    new: "%{model}の新規登録"

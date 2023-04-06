@@ -1,4 +1,4 @@
-<h1>Users</h1>
+<h1><%= t('title.index', model: User.model_name.human) %></h1>
 
 <div id="users">
   <% @users.each do |user| %>
@@ -11,4 +11,4 @@
 
 <%= paginate @users %>
 
-<%= link_to t('views.back', model: User.model_name.human), books_path %>
+<%= link_to t('views.back', model: Book.model_name.human), books_path %>

@@ -21,3 +21,9 @@ ja:
         reset_password_sent_at: パスワードリセット送信時刻  #g
         reset_password_token: パスワードリセット用トークン  #g
         self_introduction: 自己紹介  #g
+  success_message:
+    create: '%{model}の登録が完了しました。'
+    update: '%{model}の情報が更新されました。'
+    destroy: '%{model}を削除しました。'   
+  errors:
+    header: "%{model} の登録で %{count} 件のエラーが発生しました"   
