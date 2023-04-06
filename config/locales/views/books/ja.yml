@@ -6,11 +6,5 @@ ja:
       title: 一覧
     new:
       title: 新規登録
-  views:
-    show: 詳細
-    back: 一覧に戻る
-    new: 新規登録
-    edit: 編集
-    destroy: 削除
   errors:
     header: "%{model} の登録で %{count} 件のエラーが発生しました"

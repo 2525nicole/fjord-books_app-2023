@@ -2,7 +2,7 @@
 
 <div>
   <%= link_to t('views.edit'), edit_book_path(@book) %> |
-  <%= link_to t('views.back'), books_path %>
+  <%= link_to t('views.back', model: Book.model_name.human), books_path %>
 
   <%= button_to t('views.destroy'), @book, method: :delete %>
 </div>

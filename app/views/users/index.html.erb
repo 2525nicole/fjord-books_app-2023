@@ -4,11 +4,11 @@
   <% @users.each do |user| %>
     <%= render user %>
     <p>
-      <%= link_to "Show this user", user %>
+      <%= link_to t('views.show'), user %>
     </p>
   <% end %>
 </div>
 
 <%= paginate @users %>
 
-<%= link_to "Back to books", books_path %>
+<%= link_to t('views.back', model: User.model_name.human), books_path %>
