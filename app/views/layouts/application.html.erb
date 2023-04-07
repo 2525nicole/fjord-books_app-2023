@@ -17,20 +17,20 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    
+
     <p class="navbar-text pull-right">
       <% if user_signed_in? %>
         <%= t('views.login_user_name', user: current_user.email) %>
         <%= link_to t('.My profile'), user_path(current_user.id), class: 'navbar-link' %> |
         <%= link_to t('.Edit profile'), edit_user_registration_path, class: 'navbar-link' %> |
         <%= link_to t('.Users'), users_path	, class: 'navbar-link' %> |
-        <%= link_to t('.Logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'navbar-link'  %>
+        <%= link_to t('.Logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'navbar-link' %>
       <% else %>
-        <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'navbar-link'  %> |
-        <%= link_to t('devise.shared.links.sign_in'), new_user_session_path, class: 'navbar-link'  %>
+        <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t('devise.shared.links.sign_in'), new_user_session_path, class: 'navbar-link' %>
       <% end %>
     </p>
-    
+
     <%= yield %>
   </body>
 </html>

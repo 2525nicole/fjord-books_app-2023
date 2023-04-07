@@ -65,10 +65,15 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  gem 'carrierwave'
+  gem 'devise'
+  gem 'devise-i18n'
   gem 'erb_lint', require: false
+  gem 'i18n_generators'
+  gem 'kaminari'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
-  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :test do
@@ -77,9 +82,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'carrierwave'
-gem 'devise'
-gem 'kaminari'
-gem 'devise-i18n'
-gem 'i18n_generators'
