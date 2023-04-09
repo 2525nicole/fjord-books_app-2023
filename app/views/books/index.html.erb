@@ -1,7 +1,7 @@
 <h1><%= t('title.index', model: Book.model_name.human) %></h1>
-
-<div id="books">
+<div id="books" class="index-items">
   <% @books.each do |book| %>
+
     <%= render book %>
     <p>
       <%= link_to t('views.show'), book %>
