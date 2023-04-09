@@ -26,4 +26,4 @@ ja:
     update: '%{model}の情報が更新されました。'
     destroy: '%{model}を削除しました。'   
   errors:
-    header: "%{model} の登録で %{count} 件のエラーが発生しました"   
+    header: "%{model} の登録で %{count} 件のエラーが発生しました"
