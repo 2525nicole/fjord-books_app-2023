@@ -1,7 +1,6 @@
 ja:
   activerecord:
     models:
-<<<<<<< HEAD
       book: 本  #g
       user: ユーザー  #g
 
