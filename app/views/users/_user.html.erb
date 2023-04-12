@@ -1,7 +1,7 @@
 <div id="<%= dom_id user %>">
 
   <p>
-    <strong>アイコン画像</strong>
+    <strong><%= User.human_attribute_name(:avatar) %></strong>
     <%= image_tag user.avatar if user.avatar.attached? %>
   </p>
 
