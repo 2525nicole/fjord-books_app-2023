@@ -67,6 +67,7 @@ group :development do
 
   gem 'erb_lint', require: false
   gem 'faker'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'i18n_generators'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
@@ -80,4 +81,5 @@ group :test do
 end
 
 gem 'carrierwave'
+gem 'devise'
 gem 'kaminari'
