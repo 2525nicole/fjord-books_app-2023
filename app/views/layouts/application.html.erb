@@ -11,6 +11,24 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+        <strong><%= t('devise.sessions.singed_in_as_user', user: current_user.name) %></strong>
+        <%= link_to t('views.common.my_profile'), user_path(current_user.id), class: 'navbar-link' %> |
+        <%= link_to t('views.common.edit_profile'), edit_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t('views.common.title_index', name: User.model_name.human), users_path, class: 'navbar-link' %> |
+        <%= link_to t('devise.sessions.sign_out'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: 'navbar-link' %>
+      <% else %>
+        <%= link_to t('devise.registrations.new.sign_up'), new_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path, class: 'navbar-link' %>
+      <% end %>
+    </p>
     <%= yield %>
   </body>
 </html>
