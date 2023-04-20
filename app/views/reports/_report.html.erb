@@ -14,4 +14,9 @@
   <%= l report.created_at, format: :long %>
   </p>
 
+  <p>
+  <strong><%= Report.human_attribute_name(:name) %>:</strong>
+  <%= report.user.name %>
+  </p>
+
 </div>
