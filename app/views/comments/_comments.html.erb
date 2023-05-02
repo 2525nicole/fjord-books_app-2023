@@ -1,0 +1,23 @@
+<h1><%= Comment.model_name.human %></h1>
+
+<div id="comments">
+  <% comments.each do |comment| %>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+    <%= comment.content %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:name) %>:</strong>
+    <%= comment.user.name %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:posting_date) %>:</strong>
+    <%= comment.created_at %>
+  </p>
+
+  <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_comment_path %>
+  <% end %>
+</div>

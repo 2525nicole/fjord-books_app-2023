@@ -1,10 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @comment %>
 
 <div>
-  <%= link_to "Edit this comment", edit_comment_path(@comment) %> |
-  <%= link_to "Back to comments", comments_path %>
-
-  <%= button_to "Destroy this comment", @comment, method: :delete %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(Comment.model_name.human.downcase)), comments_path %>
 </div>
