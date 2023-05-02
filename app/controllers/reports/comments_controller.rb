@@ -1,5 +1,5 @@
 class Reports::CommentsController < CommentsController
-  before_action :set_commentable, only: %i[create]
+  before_action :set_commentable, only: %i[create destroy]
   #before_action :post_user?, only: %i[ show edit ]
 
   # GET /comments or /comments.json

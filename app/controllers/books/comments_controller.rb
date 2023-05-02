@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Books::CommentsController < CommentsController
-  before_action :set_commentable, only: %i[create]
+  before_action :set_commentable, only: %i[create destroy]
+  #before_action :set_commentable_link, only: %i[destory]
 
   # GET /books or /books.json
   # def index
@@ -51,8 +52,9 @@ class Books::CommentsController < CommentsController
 
   # DELETE /books/1 or /books/1.json bookのまま
   # def destroy
-  #   @book.destroy
-
+  #   super
+  #   redirect_to book_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+  # end
   #   respond_to do |format|
   #     format.html { redirect_to books_url, notice: t('controllers.common.notice_destroy', name: Book.model_name.human) }
   #     format.json { head :no_content }
@@ -71,8 +73,7 @@ class Books::CommentsController < CommentsController
     params.require(:comment).permit(:content)
   end
 
-  def render_commentable_show
-    @book = @commentable
-    render 'books/show'
-  end
+  # def set_commentable_link
+  #   @commentable = Book.find(@comment.commentable_id)
+  # end
 end
