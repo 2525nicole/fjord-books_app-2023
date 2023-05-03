@@ -20,7 +20,7 @@
 
   <div>
     <% if comment.user == current_user %>
-      <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_comment_path %>
+      <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([commentable, comment]) %>
       <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], method: :delete %>
     <% end %>
   </div>

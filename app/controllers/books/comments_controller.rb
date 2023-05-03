@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Books::CommentsController < CommentsController
-  before_action :set_commentable, only: %i[create destroy]
+  before_action :set_commentable, only: %i[create destroy update edit]
   #before_action :set_commentable_link, only: %i[destory]
 
   # GET /books or /books.json
@@ -22,7 +22,7 @@ class Books::CommentsController < CommentsController
   # end
 
   # GET /books/1/edit bookのまま
-  # def edit; end
+  #def edit; end
 
   # POST /books or /books.json
   # def create
