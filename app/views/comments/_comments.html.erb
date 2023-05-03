@@ -1,27 +1,38 @@
-<h1><%= Comment.model_name.human %></h1>
 
-<div id="comments">
-  <% comments.each do |comment| %>
+<div>
+  <h1><%= Comment.model_name.human %></h1>
 
-  <p>
-    <strong><%= Comment.human_attribute_name(:content) %>:</strong>
-    <%= comment.content %>
-  </p>
+  <% if comments.any? %>
+    <% comments.each do |comment| %>
 
-  <p>
-    <strong><%= Comment.human_attribute_name(:name) %>:</strong>
-    <%= comment.user.name %>
-  </p>
+    <p>
+      <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+      <%= comment.content %>
+    </p>
 
-  <p>
-    <strong><%= Comment.human_attribute_name(:posting_date) %>:</strong>
-    <%= comment.created_at %>
-  </p>
+    <p>
+      <strong><%= Comment.human_attribute_name(:name) %>:</strong>
+      <% if comment.user.name.present? %>
+        <%= comment.user.name %>
+      <% else %>
+        <%= comment.user.email %>
+      <% end %>
+    </p>
 
-  <div>
-    <% if comment.user == current_user %>
-      <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([commentable, comment]) %>
-      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], method: :delete %>
+    <p>
+      <strong><%= Comment.human_attribute_name(:posting_date) %>:</strong>
+      <%= l comment.created_at, format: :long %>
+    </p>
+
+    <div>
+      <% if comment.user == current_user %>
+        <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([commentable, comment]) %>
+        <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], method: :delete %>
+      <% end %>
+    </div>
     <% end %>
-  </div>
-<% end %>
+
+  <% else %>
+    <p><%= t('views.common.no_posts', name: Comment.model_name.human.downcase) %></p>
+  <% end %>
+</div>

@@ -10,7 +10,9 @@
 
 <%= paginate @comments %>
 
-<%= render 'comments/form', comment: @comment, commentable: @report %>
+<div>
+  <%= render 'comments/form', comment: @comment, commentable: @report %>
+</div>
 
 <div>
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
