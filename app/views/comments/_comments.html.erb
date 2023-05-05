@@ -1,7 +1,6 @@
 
 <div>
   <h1><%= Comment.model_name.human %></h1>
-
   <% if comments.any? %>
     <% comments.each do |comment| %>
 
@@ -32,7 +31,9 @@
     </div>
     <% end %>
 
-  <% else %>
-    <p><%= t('views.common.no_posts', name: Comment.model_name.human.downcase) %></p>
+    <% else %>
+    <p>
+      <%= t('views.common.no_posts', name: Comment.model_name.human.downcase) %>
+    </p>
   <% end %>
 </div>

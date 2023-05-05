@@ -16,7 +16,11 @@
 
   <p>
   <strong><%= Report.human_attribute_name(:name) %>:</strong>
-  <%= report.user.name %>
+  <% if report.user.name.present? %>
+    <%= report.user.name %>
+  <% else %>
+    <%= report.user.email %>
+  <% end %>
   </p>
 
 </div>
