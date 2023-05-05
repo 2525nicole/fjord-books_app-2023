@@ -10,17 +10,17 @@
   </p>
 
   <p>
-  <strong><%= Report.human_attribute_name(:posting_date) %>:</strong>
-  <%= l report.created_at, format: :long %>
+    <strong><%= Report.human_attribute_name(:posting_date) %>:</strong>
+    <%= l report.created_at, format: :long %>
   </p>
 
   <p>
-  <strong><%= Report.human_attribute_name(:name) %>:</strong>
-  <% if report.user.name.present? %>
-    <%= report.user.name %>
-  <% else %>
-    <%= report.user.email %>
-  <% end %>
+    <strong><%= Report.human_attribute_name(:name) %>:</strong>
+    <% if report.user.name.present? %>
+      <%= report.user.name %>
+    <% else %>
+      <%= report.user.email %>
+    <% end %>
   </p>
 
 </div>
