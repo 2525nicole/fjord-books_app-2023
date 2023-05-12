@@ -38,21 +38,21 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    if contributor?(@report)
-      if @report.update(report_params)
-        redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    return unless contributor?(@report)
+
+    if @report.update(report_params)
+      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    if contributor?(@report)
-      @report.destroy
-      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
-    end
+    return unless contributor?(@report)
+
+    @report.destroy
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
@@ -66,5 +66,4 @@ class ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:title, :content)
   end
-
 end

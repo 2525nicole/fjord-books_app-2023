@@ -20,20 +20,20 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if contributor?(@comment)
-      if @comment.update(comment_params)
-        redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    return unless contributor?(@comment)
+
+    if @comment.update(comment_params)
+      redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if contributor?(@comment)
-      @comment.destroy
-      redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    end
+    return unless contributor?(@comment)
+
+    @comment.destroy
+    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
