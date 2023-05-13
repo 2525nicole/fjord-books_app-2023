@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    return if contributor?(@report)
+    return if created_by?(@report)
 
     redirect_to report_path(@report), notice: t('controllers.alert.unable_to_edit')
   end
@@ -38,7 +38,7 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    return unless contributor?(@report)
+    return unless created_by?(@report)
 
     if @report.update(report_params)
       redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
@@ -49,7 +49,7 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    return unless contributor?(@report)
+    return unless created_by?(@report)
 
     @report.destroy
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)

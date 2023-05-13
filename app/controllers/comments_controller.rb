@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[edit create update destroy]
 
   def edit
-    return if contributor?(@comment)
+    return if created_by?(@comment)
 
     redirect_to @commentable, notice: t('controllers.alert.unable_to_edit')
   end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    return unless contributor?(@comment)
+    return unless created_by?(@comment)
 
     if @comment.update(comment_params)
       redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    return unless contributor?(@comment)
+    return unless created_by?(@comment)
 
     @comment.destroy
     redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
