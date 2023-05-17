@@ -188,10 +188,12 @@ ja:
       destroy: "この%{name}を削除"
       new: "%{name}の新規作成"
       back: "%{name}の一覧に戻る"
+      previous_page: 前のページに戻る
       delete_confirm: よろしいですか？
       title_index: "%{name}の一覧"
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      no_posts: "%{name}はありません"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
@@ -207,6 +209,8 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+    alert:
+      unable_to_edit: "投稿者以外は編集できません。"
   layouts:
     application:
       menu: メニュー

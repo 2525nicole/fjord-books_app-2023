@@ -1,0 +1,9 @@
+<h1><%= t('views.common.title_edit', name: Comment.model_name.human.downcase) %></h1>
+
+<%= render "form", comment: @comment, commentable: @commentable %>
+
+<br>
+
+<div>
+  <%= link_to t('views.common.previous_page'), @commentable %>
+</div>

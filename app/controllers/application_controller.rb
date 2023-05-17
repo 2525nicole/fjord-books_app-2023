@@ -3,6 +3,11 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  helper_method :created_by?
+
+  def created_by?(content)
+    content.user == current_user
+  end
 
   protected
 
