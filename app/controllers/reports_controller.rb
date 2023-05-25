@@ -30,10 +30,10 @@ class ReportsController < ApplicationController
 
       @report.contained_report_id.each do |r|
         @mention = create_mention(r)
-        saveable_mention = @mention.save!
+        @mention.save!
       end
 
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) if saveable_report || saveable_mention
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) if saveable_report
     end
   end
 
@@ -49,17 +49,15 @@ class ReportsController < ApplicationController
 
       mentions_before_update.each do |m|
         destruction_target = Mention.find_by!(mentioning_report_id: @report.id, mentioned_report_id: m)
-        destroyable_mention = destruction_target.destroy!
+        destruction_target.destroy!
       end
 
       @report.contained_report_id.each do |r|
         @mention = create_mention(r)
-        saveable_mention = @mention.save!
+        @mention.save!
       end
 
-      if updatable_report || destroyable_mention || saveable_mention
-        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      end
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human) if updatable_report
     end
   end
 
