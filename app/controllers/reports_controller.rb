@@ -81,7 +81,7 @@ class ReportsController < ApplicationController
   end
 
   def create_mention(id)
-    Mention.new(mentioning_report_id: @report.id, mentioned_report_id: id)
+    @report.mentioning_relationships.new(mentioned_report_id: id)
   end
 
   def lost_mentions(before, after)
