@@ -47,10 +47,17 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
 
-      destroy_lost_mentions(mentions_before_update, contained_report_id, @report)
-      create_added_mentions(contained_report_id, mentions_before_update)
+      mentions_before_update.each do |m|
+        destruction_target = Mention.find_by!(mentioning_report_id: @report.id, mentioned_report_id: r)
+        destroyable_mention = destruction_target.destroy!
+      end
 
-      if updatable_report || destroy_lost_mentions || create_added_mentions
+      contained_report_id.each do |r|
+        @mention = create_mention(r)
+        saveable_mention = @mention.save!
+      end
+
+      if updatable_report || destroyable_mention || saveable_mention
         redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
       end
     end
@@ -82,41 +89,5 @@ class ReportsController < ApplicationController
 
   def create_mention(id)
     @report.mentioning_relationships.new(mentioned_report_id: id)
-  end
-
-  def lost_mentions(before, after)
-    before - after
-  end
-
-  def added_mentions(after, before)
-    after - before
-  end
-
-  def destroy_lost_mentions(mentions_before_update, contained_report_id, report)
-    lost = lost_mentions(mentions_before_update, contained_report_id)
-    return unless lost.any?
-
-    lost.each do |l|
-      destruction_target = Mention.find_by(mentioning_report_id: report.id, mentioned_report_id: l)
-      destroyable_mention = destruction_target.destroy
-      unless destroyable_mention
-        render 'public/500.ja.html', status: :internal_server_error
-        raise ActiveRecord::Rollback
-      end
-    end
-  end
-
-  def create_added_mentions(contained_report_id, mentions_before_update)
-    added = added_mentions(contained_report_id, mentions_before_update)
-    return unless added.any?
-
-    added.each do |a|
-      additional_mention = create_mention(a)
-      updatable_mention = additional_mention.save
-      unless updatable_mention
-        render 'public/500.ja.html', status: :internal_server_error
-        raise ActiveRecord::Rollback
-      end
-    end
   end
 end
