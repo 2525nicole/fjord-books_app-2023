@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
 
-      contained_report_id.each do |r|
+      @report.contained_report_id.each do |r|
         @mention = create_mention(r)
         saveable_mention = @mention.save!
       end
@@ -48,11 +48,11 @@ class ReportsController < ApplicationController
       end
 
       mentions_before_update.each do |m|
-        destruction_target = Mention.find_by!(mentioning_report_id: @report.id, mentioned_report_id: r)
+        destruction_target = Mention.find_by!(mentioning_report_id: @report.id, mentioned_report_id: m)
         destroyable_mention = destruction_target.destroy!
       end
 
-      contained_report_id.each do |r|
+      @report.contained_report_id.each do |r|
         @mention = create_mention(r)
         saveable_mention = @mention.save!
       end
@@ -77,14 +77,6 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
-  end
-
-  def contains_mentions?
-    @report.content.include?('http://localhost:3000/')
-  end
-
-  def contained_report_id
-    @report.content.scan(Report::HOST_REGEXP).uniq.flatten
   end
 
   def create_mention(id)

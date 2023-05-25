@@ -28,4 +28,8 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
+  def contained_report_id
+    content.scan(Report::HOST_REGEXP).uniq.flatten
+  end
 end
