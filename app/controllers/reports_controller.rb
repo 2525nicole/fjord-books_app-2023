@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @mentioned_reports = @report.mentioned_reports.order(created_at: :desc).order(id: :desc).includes(:user)
+    @mentioned_reports = @report.mentioned_reports.order(created_at: :desc, id: :desc).includes(:user)
   end
 
   # GET /reports/new
@@ -28,15 +28,9 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
 
-      if contains_mentions?
-        contained_report_id.each do |r|
-          @mention = create_mention(r)
-          saveable_mention = @mention.save
-          unless saveable_mention
-            render 'public/500.ja.html', status: :internal_server_error
-            raise ActiveRecord::Rollback
-          end
-        end
+      contained_report_id.each do |r|
+        @mention = create_mention(r)
+        saveable_mention = @mention.save!
       end
 
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) if saveable_report || saveable_mention
