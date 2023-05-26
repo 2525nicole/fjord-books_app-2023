@@ -22,8 +22,7 @@ class ReportsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @report = current_user.reports.new(report_params)
-      saveable_report = @report.save
-      unless saveable_report
+      unless @report.save
         render :new, status: :unprocessable_entity
         raise ActiveRecord::Rollback
       end

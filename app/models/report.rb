@@ -35,8 +35,8 @@ class Report < ApplicationRecord
 
   def create_mention(ids)
     ids.each do |id|
-    mention = mentioning_relationships.new(mentioned_report_id: id)
-    mention.save!
+      mention = mentioning_relationships.new(mentioned_report_id: id)
+      mention.save!
     end
   end
 end
