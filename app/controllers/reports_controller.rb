@@ -33,7 +33,7 @@ class ReportsController < ApplicationController
         @mention.save!
       end
 
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) if saveable_report
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     end
   end
 
@@ -57,7 +57,7 @@ class ReportsController < ApplicationController
         @mention.save!
       end
 
-      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human) if updatable_report
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     end
   end
 
