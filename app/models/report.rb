@@ -33,7 +33,10 @@ class Report < ApplicationRecord
     content.scan(Report::HOST_REGEXP).uniq.flatten
   end
 
-  def create_mention(id)
-    mentioning_relationships.new(mentioned_report_id: id)
+  def create_mention(ids)
+    ids.each do |id|
+    mention = mentioning_relationships.new(mentioned_report_id: id)
+    mention.save!
+    end
   end
 end

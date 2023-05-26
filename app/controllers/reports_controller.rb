@@ -28,10 +28,7 @@ class ReportsController < ApplicationController
         raise ActiveRecord::Rollback
       end
 
-      @report.contained_report_id.each do |r|
-        @mention = @report.create_mention(r)
-        @mention.save!
-      end
+      @report.create_mention(@report.contained_report_id)
 
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     end
@@ -51,10 +48,7 @@ class ReportsController < ApplicationController
         destruction_target.destroy!
       end
 
-      @report.contained_report_id.each do |r|
-        @mention = @report.create_mention(r)
-        @mention.save!
-      end
+      @report.create_mention(@report.contained_report_id)
 
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     end
