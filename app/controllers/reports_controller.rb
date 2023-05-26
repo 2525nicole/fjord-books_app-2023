@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
       end
 
       @report.contained_report_id.each do |r|
-        @mention = create_mention(r)
+        @mention = @report.create_mention(r)
         @mention.save!
       end
 
@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
       end
 
       @report.contained_report_id.each do |r|
-        @mention = create_mention(r)
+        @mention = @report.create_mention(r)
         @mention.save!
       end
 
@@ -75,9 +75,5 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
-  end
-
-  def create_mention(id)
-    @report.mentioning_relationships.new(mentioned_report_id: id)
   end
 end

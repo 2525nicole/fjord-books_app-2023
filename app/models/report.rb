@@ -32,4 +32,8 @@ class Report < ApplicationRecord
   def contained_report_id
     content.scan(Report::HOST_REGEXP).uniq.flatten
   end
+
+  def create_mention(id)
+    mentioning_relationships.new(mentioned_report_id: id)
+  end
 end
