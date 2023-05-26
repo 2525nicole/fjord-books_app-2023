@@ -38,17 +38,16 @@ class ReportsController < ApplicationController
   end
 
   def update
-    mentions_before_update = @report.mentioning_reports
+    mention_ids = @report.mentioning_reports
 
     ActiveRecord::Base.transaction do
-      updatable_report = @report.update(report_params)
-      unless updatable_report
+      unless @report.update(report_params)
         render :edit, status: :unprocessable_entity
         raise ActiveRecord::Rollback
       end
 
-      mentions_before_update.each do |m|
-        destruction_target = Mention.find_by!(mentioning_report_id: @report.id, mentioned_report_id: m)
+      mention_ids.each do |m|
+        destruction_target = @report.mentioning_relationships.find_by!(mentioned_report_id: m)
         destruction_target.destroy!
       end
 
