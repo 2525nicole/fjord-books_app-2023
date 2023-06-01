@@ -20,7 +20,3 @@ carol:
 dave:
   name: Dave
   email: 'dave@example.com'
-
-#
-#two: {}
-# column: value
