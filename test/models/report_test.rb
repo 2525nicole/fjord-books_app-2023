@@ -16,9 +16,8 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'created_on' do
-    assert_instance_of(Date, @report.created_on)
-
-    assert_not_instance_of(Date, @report.created_at)
+    @report.created_at = Time.zone.parse('2023-01-01')
+    assert_equal Date.new(2023, 1, 1), @report.created_on
   end
 
   test 'save_mentions' do
